@@ -6,7 +6,8 @@ const { default: mdx } = pkg;
 export default defineConfig({
     ssr: false,
     server: {
-        preset: 'github-pages'
+        preset: 'github-pages',
+        baseURL: '/doc-test',
     },
     extensions: ["mdx", "md"],
     vite: {
