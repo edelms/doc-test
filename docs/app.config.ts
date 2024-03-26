@@ -4,7 +4,7 @@ import pkg from "@vinxi/plugin-mdx";
 
 const { default: mdx } = pkg;
 export default defineConfig({
-    ssr: false,
+    ssr: true,
     server: {
         preset: 'github-pages'
     },
