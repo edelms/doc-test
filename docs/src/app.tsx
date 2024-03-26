@@ -1,6 +1,6 @@
 import { A, Navigate, Route, Router, useLocation } from "@solidjs/router";
 import { FileRoutes } from "@solidjs/start/router";
-import { Suspense, createEffect } from "solid-js";
+import { Suspense, createEffect, on } from "solid-js";
 import "./app.css";
 
 export default function App() {
@@ -25,9 +25,13 @@ export default function App() {
 
 function Track() {
     const loc = useLocation();
-    createEffect(() => {
-        (window as any)._paq?.push(['setCustomUrl', loc.pathname]);
-        (window as any)._paq?.push(['trackPageView']);
-    })
+    createEffect(on(
+        () => loc.pathname,
+        (pathname) => {
+            (window as any)._paq?.push(['setCustomUrl', pathname]);
+            (window as any)._paq?.push(['trackPageView']);
+        },
+        { defer: true }
+    ));
     return <></>;
 }
