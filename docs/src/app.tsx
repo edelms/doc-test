@@ -6,17 +6,15 @@ import "./app.css";
 export default function App() {
     return (
         <Router
-            base={import.meta.env.SERVER_BASE_URL}
             root={props => (
                 <main>
-                    <A href="/home">Index</A>
+                    <A href="/">Index</A>
                     <A href="/about">About</A>
                     <Suspense>{props.children}</Suspense>
                     <Track />
                 </main>
             )}
         >
-            <Route path='/' component={() => <Navigate href='/home' />} />
             <FileRoutes />
         </Router>
     );
